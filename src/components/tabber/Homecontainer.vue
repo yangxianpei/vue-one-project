@@ -11,10 +11,10 @@
 
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/newslist">
           <img src="./../../images/menu1.png" alt="">
           <div class="mui-media-body">新闻资讯</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import data from "./../../mock.js";
+import  "./../../mock.js";
 // console.log(data)
 
 //提醒用户导入mint-ui
@@ -70,7 +70,7 @@ export default {
     getlunbotu() {
       this.$http.get("http://g.cn").then(
         success => {
-          this.lunbotulist = success.body;
+          this.lunbotulist = success.body
         },
         fail => {
           Toast("获取失败");
@@ -112,6 +112,9 @@ ul li img {
 }
 .mui-media-body{
   font-size: 13px;
+
 }
+
+
 </style>
  

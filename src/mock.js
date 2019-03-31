@@ -2,7 +2,9 @@ import Mock from 'mockjs' // 引入mockjs
  
 const Random = Mock.Random // Mock.Random 是一个工具类，用于生成各种随机数据
  
-let data = [] // 用于接受生成数据的数组
+let data = [] //轮播图
+let data2=[] //新闻列表
+let data3=[]//新闻详情
 let size = ['320x150']
   // , '250x250', '240x400', '336x280', 
   // '180x150', '720x300', '468x60', '234x60', 
@@ -27,8 +29,38 @@ for(let i = 0; i < 3; i ++) { // 可自定义生成的个数
     // 'Url': Random.url(), // 生成web地址
     // 'Address': Random.province() // 生成地址
   }
+
+  
   data.push(template)
+  
+}
+
+for(let i=0 ;i<50;i++){
+  let template2={
+    'title':Random.ctitle(),
+    'id': i,
+    'Paragraph':Random.cparagraph(2, 5),
+    'Date': Random.datetime(),
+    'click': Random.integer(1, 100),
+    'Image': Random.image('40x40', Random.color(), '40x40')
+  }
+  data2.push(template2)
 }
  
+for(let i=0;i<50;i++){
+  let template3={
+    'title':Random.ctitle(),
+    'id': i,
+    'Paragraph':Random.cparagraph(20, 40),
+    'Date': Random.datetime(),
+    'click': Random.integer(1, 100),
+  }
+  data3.push(template3)
+}
 // Mock.mock('/data/index', 'post', data) // 根据数据模板生成模拟数据
 export default Mock.mock('http://g.cn',data)
+
+//新闻列表
+export var title= Mock.mock('http://f.cn',data2)
+//新闻详情
+export var content= Mock.mock('http://c.cn',data3)
