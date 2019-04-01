@@ -109,7 +109,7 @@
  + 在项目中，import 导入的 mui.js 中，使用了 callee caller 这些特性， 但是这些特性在严格模式中不支持，会报错；
  + 经过分析：发现，关闭webpack的严格模式，更容易一些，因为不再需要修改mui.js的源代码了；
  + 如何关闭webpack的严格模式呢？使用一个webpack的插件：`https://github.com/genify/babel-plugin-transform-remove-strict-mode`
-
+ + touch-action: pan-y;
 
 ## 当移除严格模式之后滑动效果还无法实现
 1. 主要原因：需要在`mounted`钩子函数中来初始化

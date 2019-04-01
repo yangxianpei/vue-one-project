@@ -6,7 +6,8 @@ import Shopcarcontainer from './components/tabber/Shopcarcontainer.vue'
 import Searchcontainer from './components/tabber/Searchcontainer.vue'
 import Newslist from './components/Newslist/Newslist.vue'
 import Newsinfo from './components/Newslist/Newsinfo.vue'
-
+import Photolist from './components/photo/photolist.vue'
+import Photoinfo from './components/photo/photoinfo.vue'
 var router = new VueRouter({
   routes: [
     {path:'/',redirect:'/home'},
@@ -15,7 +16,9 @@ var router = new VueRouter({
     { path: '/shopcar', component: Shopcarcontainer },
     { path: '/search', component: Searchcontainer },
     { path:'/home/newslist',component:Newslist},
-    { path:'/home/newsinfo/:id',component:Newsinfo}
+    { path:'/home/newsinfo/:id',component:Newsinfo},
+    { path:'/home/photolist',component:Photolist},
+    { path:'/home/photo/:id',component:Photoinfo}
 
   ],
   linkActiveClass: 'mui-active' //设置自己的类名 这个类名刚好mui组件里有内置css所以有样式

@@ -9,11 +9,17 @@ Vue.use(VueRouter)
 
 
 //按需引入mint-ui
-import { Header , Swipe, SwipeItem} from 'mint-ui'
-Vue.component(Header.name,Header)
-Vue.component(Swipe.name, Swipe)
-Vue.component(SwipeItem.name, SwipeItem)
+// import { Header , Swipe, SwipeItem, Button,Lazyload} from 'mint-ui'
+// Vue.component(Header.name,Header)
+// Vue.component(Swipe.name, Swipe)
+// Vue.component(SwipeItem.name, SwipeItem)
+// Vue.component(Button.name, Button)
+// Vue.use(Lazyload)
 
+//全部导入mint-ui
+import MintUI from 'mint-ui'
+Vue.use(MintUI)
+import 'mint-ui/lib/style.css'
 
 //引入app.vue
 import app from './APP.vue'
@@ -22,8 +28,6 @@ import '../lib/mui/css/mui.min.css'
 //引入mui 图标
 import '../lib/mui/css/icons-extra.css'
 
-// //引入mock
-// require('./mock.js')
 
 //导入自己的路由
 import router from './router.js'
@@ -38,6 +42,16 @@ Vue.filter('dateFormat',function(dateStr,pattern="YYYY-MM-DD HH:mm:ss"){
 //导入vue-resource
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
+//配置全局对象 默认传参格式 application/x-www-form-urlencoded
+Vue.http.options.emulateHTTP = true
+
+
+
+//导入vue-preview
+import VuePreview from 'vue-preview'
+
+Vue.use(VuePreview)
+
 
 var vm = new Vue({
   el:'#app',

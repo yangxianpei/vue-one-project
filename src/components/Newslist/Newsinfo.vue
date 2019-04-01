@@ -1,6 +1,6 @@
 <template>
   <div class="newsinfocontainner">
-    <!-- <li  v-for="item in newsinfo" :key="item.id"> -->
+    <!-- 标题 -->
       <h3 class="title">{{this.newsinfo.title}}</h3>
       <p class="subtitle">
         <span class="time">发表时间:{{this.newsinfo.Date}}</span>
@@ -8,13 +8,19 @@
       </p>
       <hr>
       <div class="content">{{this.newsinfo.Paragraph}}</div>
-    </li>
+
+
+      <!-- 发表评论 -->
+      <comment :id="this.id"></comment>
   </div>
 </template>
 
 <script>
 import data3 from "./../../mock.js";
 import { Toast } from "mint-ui";
+
+//导入comment.vue评论子组件
+import comment from './../subcomponents/comment.vue'
 
 export default {
   data() {
@@ -39,6 +45,9 @@ export default {
         }
       );
     }
+  },
+  components:{
+    comment
   }
 };
 </script>
@@ -63,6 +72,8 @@ export default {
   }
   .content {
       font-size: 12px;
+      text-indent: 2em;
+     
   }
 }
 </style>
