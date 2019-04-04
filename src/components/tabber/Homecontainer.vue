@@ -1,11 +1,9 @@
 <template>
   <div>
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000">
-      <mt-swipe-item v-for="item in lunbotulist " :key="item.id">
-        <img :src="item.Image" alt>
-      </mt-swipe-item>
-    </mt-swipe>
+   <slide :lunbotulist='lunbotulist' :infull='false'></slide>
+
+  
 
     <!-- 六宫格 -->
 
@@ -23,10 +21,10 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <a href="#">
+        <router-link to="/home/goodslist">
           <img src="./../../images/menu3.png" alt="">
           <div class="mui-media-body">商品购买</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
         <a href="#">
@@ -50,14 +48,19 @@
   </div>
 </template>
 
+
 <script>
 import  "./../../mock.js";
 // console.log(data)
 
+//导入轮播图
+import slide from './../subcomponents/slide.vue' 
+
 //提醒用户导入mint-ui
 import {Toast} from 'mint-ui'
 
-export default {
+
+  export default{
   data() {
     return {
       lunbotulist: ""
@@ -71,31 +74,21 @@ export default {
       this.$http.get("http://g.cn").then(
         success => {
           this.lunbotulist = success.body
+          console.log( this.lunbotulist.Image)
         },
         fail => {
           Toast("获取失败");
         }
       );
     }
-  }
-};
-</script>
-
-<style lang="less" scoped>
-.mint-swipe {
-  height: 150px;
-  .mint-swipe-item {
-    &:nth-child(1) {
-      background-color: red;
-    }
-    &:nth-child(2) {
-      background-color: rebeccapurple;
-    }
-    &:nth-child(3) {
-      background-color: hotpink;
-    }
+  },
+  components:{
+    slide
   }
 }
+</script>
+<style lang="less" scoped>
+
 ul li img {
   width: 60px;
   height:60px;
@@ -114,7 +107,6 @@ ul li img {
   font-size: 13px;
 
 }
-
 
 </style>
  

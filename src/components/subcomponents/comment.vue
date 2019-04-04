@@ -73,7 +73,7 @@
                 this.sentcomment=''
             }
         },
-        props:['id'] //注册父组件Newsinfo的id
+        props:['    '] //注册父组件Newsinfo的id
 
     }
 

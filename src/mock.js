@@ -9,11 +9,15 @@ let data3 = []//新闻详情
 let data4 = []//评论信息
 let comments = []
 
-let photo = []
+let photo = [] //图片分享
 let photoimage = []
 
 
 let suoluetu=[]
+
+
+let goodsinfo=[]
+let goodsxiangxiinfo=[]
 
 
 let size = ['320x150']
@@ -26,14 +30,14 @@ let size = ['320x150']
 for (let i = 0; i < 3; i++) { // 可自定义生成的个数
   let template = {
     // 'Boolean': Random.boolean, // 可以生成基本数据类型
-    // 'Natural': Random.natural(1, 10), // 生成1到100之间自然数
-    // 'Integer': Random.integer(1, 100), // 生成1到100之间的整数
+    'price': Random.natural(1, 10000), // 生成1到100之间自然数
+    'Integer': Random.integer(1, 100), // 生成1到100之间的整数
     // 'Float': Random.float(0, 100, 0, 5), // 生成0到100之间的浮点数,小数点后尾数为0到5位
     // 'Character': Random.character(), // 生成随机字符串,可加参数定义规则
     // 'String': Random.string(2, 10), // 生成2到10个字符之间的字符串
     // 'Range': Random.range(0, 10, 2), // 生成一个随机数组
     // 'Date': Random.date(), // 生成一个随机日期,可加参数定义日期格式
-    'Image': Random.image(size, Random.color(), '320x150'), // Random.size表示将从size数据中任选一个数据
+    'Image': Random.image(size, Random.color(), '320x150')// Random.size表示将从size数据中任选一个数据
     // 'Color': Random.color(), // 生成一个颜色随机值
     // 'Paragraph':Random.paragraph(2, 5), //生成2至5个句子的文本
     // 'Name': Random.name(), // 生成姓名
@@ -142,3 +146,33 @@ export var image = Mock.mock("http://i.cn", temp)
   
 
 export var suolue = Mock.mock("http://suo.cn", suoluetu)
+
+
+var n=0;
+for(let j=0;j<10;j++){
+  let template8= {
+    'id':n++,
+    'Name': Random.name(),
+    'pricenow': Random.integer(1, 100),
+    'priceold': Random.integer(1, 10000),
+    'stock': Random.integer(1, 100),
+    'msrc':Random.image('240x200', Random.color(), '240x200')
+  }
+  goodsinfo.push(template8)
+}
+export var goods = Mock.mock("http://goods.cn", goodsinfo)
+
+
+
+for(let i=0;i<10;i++){
+  let template9= {
+
+    'price': Random.integer(1, 10000),
+    'stock': Random.integer(1, 100),
+  }
+  goodsxiangxiinfo.push(template9)
+}
+ 
+
+
+export var goodsxiangxi = Mock.mock("http://goodsxiangxi.cn", goodsxiangxiinfo)

@@ -11,7 +11,7 @@
             :class="['mui-control-item',item.id===0 ? 'mui-active' : '']"
             v-for="item in cates"
             :key="item.id"
-            @click="getimage(item.id)"
+            @click="getmore"
           >{{item.title}}</a>
         </div>
       </div>
@@ -56,15 +56,22 @@ export default {
   methods: {
     getphoto() {
       this.$http.get("http://p.cn").then(success => {
-        this.cates = success.body;
+        this.cates = success.body
         // console.log(success.body);
       });
     },
     getimage(catesid) {
       this.$http.get("http://i.cn").then(success => {
-        this.list = success.body[catesid];
-        console.log(success.body);
+        this.list = success.body[catesid]
+
       });
+    },
+    getmore(catesid){
+
+       this.$http.get("http://i.cn").then(success => {
+        this.list = success.body[2]
+
+      })
     }
   }
 };
